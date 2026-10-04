@@ -2,11 +2,12 @@
 title: "Alex Erickson"
 ---
 
-Hey Im Alex.
+Hey, I'm Alex! I'm studying Applied Mathematics at Pomona College.
+I'm interested in sports analytics and I love collectinng pokemon cards.
 
 ---
 title: "Alex Erickson"
-image: A_Headshot.png
+image: media/A_pic.png
 toc: false
 about: 
   template: jolla
@@ -17,7 +18,10 @@ about:
       #href: 
       target: _blank
     - text: GitHub
-      #href: 
+      href: https://github.com/Aleric3
+      target: _blank
+    - text: Website Source
+      href: https://github.com/Aleric3/Aleric3.github.io
       target: _blank 
     - text: Email
       href: aeiy2025@mymail.pomona.edu

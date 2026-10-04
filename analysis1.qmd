@@ -1,0 +1,9 @@
+---
+title: "Analysis 1"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+My first TidyTuesday analysis.

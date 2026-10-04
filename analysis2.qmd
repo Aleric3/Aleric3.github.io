@@ -1,0 +1,9 @@
+---
+title: "Analysis 2"
+format: html
+execute:
+  warning: false
+  message: false
+---
+
+My second TidyTuesday analysis.
