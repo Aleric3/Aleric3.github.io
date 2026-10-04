@@ -3,3 +3,24 @@ title: "Alex Erickson"
 ---
 
 Hey Im Alex.
+
+---
+title: "Alex Erickson"
+image: A_Headshot.png
+toc: false
+about: 
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      #href: 
+      target: _blank
+    - text: GitHub
+      #href: 
+      target: _blank 
+    - text: Email
+      href: aeiy2025@mymail.pomona.edu
+---
+        
+
