@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "analysis1.html",
+    "href": "analysis1.html",
+    "title": "Analysis 1",
+    "section": "",
+    "text": "My first TidyTuesday analysis."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -12,13 +19,6 @@
     "title": "Alex Erickson",
     "section": "",
     "text": "Hey, I’m Alex! I’m studying Applied Mathematics at Pomona College. I’m interested in sports analytics and I love collectinng pokemon cards."
-  },
-  {
-    "objectID": "analysis1.html",
-    "href": "analysis1.html",
-    "title": "Analysis 1",
-    "section": "",
-    "text": "My first TidyTuesday analysis."
   },
   {
     "objectID": "analysis2.html",
