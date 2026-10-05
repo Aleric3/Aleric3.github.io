@@ -15,7 +15,7 @@ about:
   image-width: 17em
   links:
     - text: LinkedIn
-      #href: https://www.linkedin.com/in/alex-erickson-b90a933ab 
+      href: https://www.linkedin.com/in/alex-erickson-b90a933ab 
       target: _blank
     - text: GitHub
       href: https://github.com/Aleric3
