@@ -50,7 +50,8 @@ convey a large difference in activity between games withinn the month of January
 
 Sources:
 
-R for Data Science. (2021, March 16). TidyTuesday: Video Games and Sliced. Dataset and documentation.
+R for Data Science. (2021, March 16). TidyTuesday: Video Games and Sliced. Dataset and 
+documentation.
 
 michau96. (n.d.). Popularity of games on Steam [Dataset]. Kaggle. Kaggle dataset.
 
