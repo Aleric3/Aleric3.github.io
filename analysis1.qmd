@@ -1,9 +1,40 @@
 ---
-title: "Analysis 1"
+title: "Bob's Burgers Dialogue"
+author: "Alex Erickson"
+description: "Comparing average dialogue line lengths across several seasons of Bob's Burgers."
 format: html
 execute:
   warning: false
   message: false
 ---
 
-My first TidyTuesday analysis.
+This TidyTuesday dataset from November 19, 2024 contains diologue data from the show Bob's Burgers.
+
+```{r}
+
+library(ggplot2)
+
+  episodes <- read.csv("episode_metrics.csv")
+
+  ggplot(episodes, aes(x = season, y = avg_length, group = season)) +
+    geom_boxplot(fill = "blue")+
+    labs(
+      title = "Dialogue Length Per Bob's Burgers Seasons",
+      x = "Seasons",
+      y= "Average Characters Per Line"
+    
+    )
+
+```
+
+In this plot that compares average diologue lengths among several seasons of Bob's Burgers each episode contributes one value: its average number of characters per line of diologue. Within the box plot, each line in the middle of the box represents the median. A higher median indicates a longer diologue and vice versa. Boxas that are taller indicate a greater variation of diologue length within a season, and shorter boxes indicate the opposite. 
+
+Sources:
+
+R for Data Science. *TidyTuesday: Bob’s Burgers Episodes*.
+November 19, 2024. 
+https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-11-19/readme.md
+
+Ponce, Steven. *bobsburgersR: Collection of datasets from the
+Bob’s Burgers animated sitcom*. Original transcript dataset.
+<https://github.com/poncest/bobsburgersR>

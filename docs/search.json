@@ -2,9 +2,9 @@
   {
     "objectID": "analysis1.html",
     "href": "analysis1.html",
-    "title": "Analysis 1",
+    "title": "Bob’s Burgers Dialogue",
     "section": "",
-    "text": "My first TidyTuesday analysis."
+    "text": "This TidyTuesday dataset from November 19, 2024 contains diologue data from the show Bob’s Burgers.\n\nlibrary(ggplot2)\n\n  episodes &lt;- read.csv(\"episode_metrics.csv\")\n\n  ggplot(episodes, aes(x = season, y = avg_length, group = season)) +\n    geom_boxplot(fill = \"blue\")+\n    labs(\n      title = \"Dialogue Length Per Bob's Burgers Seasons\",\n      x = \"Seasons\",\n      y= \"Average Characters Per Line\"\n    \n    )\n\n\n\n\n\n\n\n\nIn this plot that compares average diologue lengths among several seasons of Bob’s Burgers each episode contributes one value: its average number of characters per line of diologue. Within the box plot, each line in the middle of the box represents the median. A higher median indicates a longer diologue and vice versa. Boxas that are taller indicate a greater variation of diologue length within a season, and shorter boxes indicate the opposite.\nSources:\nR for Data Science. TidyTuesday: Bob’s Burgers Episodes. November 19, 2024. https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-11-19/readme.md\nPonce, Steven. bobsburgersR: Collection of datasets from the Bob’s Burgers animated sitcom. Original transcript dataset. https://github.com/poncest/bobsburgersR"
   },
   {
     "objectID": "about.html",
