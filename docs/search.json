@@ -23,8 +23,8 @@
   {
     "objectID": "analysis2.html",
     "href": "analysis2.html",
-    "title": "Analysis 2",
+    "title": "Steam Video Game Popularity",
     "section": "",
-    "text": "My second TidyTuesday analysis."
+    "text": "A TidyTuesday dataset from March 16, 2021 that contains monthly player activity for games on Steam.\n\nlibrary(dplyr)\nlibrary(ggplot2)\n\ngames &lt;- read.csv(\"games.csv\")\n\ngames_select &lt;- filter(\n  games,\n  year == 2021,\n  month == \"January\",\n  gamename == \"Apex Legends\" |\n    gamename == \"Rust\" |\n    gamename == \"Rocket League\" |\n   gamename == \"Dota 2\" |\n    gamename == \"Team Fortress 2\" |\n    gamename == \"Counter-Strike: Global Offensive\"\n)\n\nggplot(games_select, aes(x = gamename, y = avg)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  labs(\n    title = \"Player Activity on Steam in January 2021\",\n    x = \"Game\",\n    y = \"Average Players\"\n  ) +\n    theme(axis.text.x = element_text(angle = 45, hjust = 1))"
   }
 ]
