@@ -1,0 +1,139 @@
+title: "Exploring Netflix Titles"
+author: "Alex Erickson"
+format: html
+execute:
+  warning: false
+  message: false
+
+
+How do Netflix story themes differ by country and between movies and TV shows?
+
+```{r}
+library(tidyverse)
+
+netflix <- read_csv(
+  "https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2021/2021-04-20/netflix_titles.csv"
+)
+
+netflix_countries <- netflix |>
+  filter(
+    country == "United States" |
+    country == "India" |
+    country == "United Kingdom" |
+    country == "Japan" |
+    country == "South Korea" |
+    country == "Canada"
+  )
+
+netflix_countries |>
+  count(country, type)
+```
+
+
+```{r}
+netflix_themes <- netflix_countries |>
+  filter(!is.na(description)) |>
+  mutate(description_c = str_to_lower(description))
+
+netflix_themes |>
+  select(title, description_c)
+
+netflix_themes <- netflix_themes |>
+mutate(
+    family = str_detect(
+      description_c,
+      "\\b(family|families|mother|father|siblings?)\\b"
+    ),
+    romance = str_detect(
+      description_c,
+      "\\b(romance|romantic|love|relationships?)\\b"
+    ),
+    crime = str_detect(
+      description_c,
+      "\\b(murders?|police|detectives?|criminals?)\\b"
+    ),
+    adventure = str_detect(
+      description_c,
+      "\\b(adventures?|journeys?|quests?|expeditions?)\\b"
+    )
+  )
+
+t_summary <- netflix_themes |>
+  group_by(country) |>
+  summarise(
+    family = mean(family) * 100,
+    romance = mean(romance) * 100,
+    crime = mean(crime) * 100,
+    adventure = mean(adventure) * 100
+  )
+
+t_long <- t_summary |>
+  pivot_longer(
+    cols = c(family, romance, crime, adventure),
+    names_to = "theme",
+    values_to = "percentage"
+  )
+
+ggplot(t_long, aes(x = theme, y = country, fill = percentage)) +
+    geom_tile(color = "white") +
+    geom_text(aes(label = paste0(round(percentage, 1), "%"))) +
+    scale_fill_gradient(low = "#EFF6FF", high = "#60A5FA") +
+
+    labs(
+    title = "Netflix Themes by Country",
+    subtitle = "Percentage of descriptions mentioning each theme's keywords",
+    x = "Theme",
+    y = "Production Country",
+    fill = "Titles (%)",
+  ) +
+    theme_minimal() +
+    theme(plot.title = element_text(face = "bold"))
+
+```
+
+
+The heatmap above sorts Netflix themes by country (United States, India, Unnited Kingdom, Japan, South Korea and Canada) and displays the percentage of descriptions mentioning each themes keywords. Family keywords apear the most in descriptions from India at roughly 18.3%. South Korean descriptions of titles mention romance at 15.8%, while Japan has the highest percentage of adventure mentions at 8.9%. The patterns emphasize that themes vary by country however, this acounts for both tv shows and movies, which will be compared below.
+
+
+```{r}
+
+netflix_themes <- netflix_themes |>
+  mutate(
+    romance_w = str_extract(
+      description_c,
+      "\\b(romance|romantic|love|relationships?)(?!\\w)"
+    ),
+    romance = !is.na(romance_w))
+
+romance_sum <- netflix_themes |>
+    group_by(country, type) |>
+    summarise(percent = mean(romance) * 100, titles = n()) |>
+    mutate(type = fct_relevel(type, "Movie", "TV Show"))
+
+
+ggplot(romance_sum, aes(x = country, y = percent, fill = type)) +
+    geom_col(position = "dodge") +
+    scale_fill_manual(values = c("lightgreen", "darkgreen")) +
+    labs(
+    title = "Romance Mentions by Country in Movies vs. TV Shows",
+    subtitle = "Percentage of descriptions matching romance keywords",
+    x = "Country",
+    y = "Titles Mentioning Romance (%)",
+    fill = "Content Type"
+    ) +
+    theme( axis.text.x = element_text(angle = 30, hjust = 1))
+
+
+```
+
+The boxplot above shows the Romance mentions by country in TV Shows vs Movies. South Korea has the largest difference of romance mentions with romance keywords apearing in the descriptions of 19% of TV Shows but only 3% of movies. India shows the opposite pattern, with romance keyword mentions being about 4% more common in movies then TV shows. This also relates to the heatmap as this data helps show that South Korea's high pecentage in romance keywords is heaviy driven by romance TV shows.
+
+Sources:
+
+R for Data Science. TidyTuesday: Netflix Shows.
+April 20, 2021.
+https://github.com/rfordatascience/tidytuesday/blob/main/data/2021/2021-04-20/readme.md
+
+Bansal, Shivam. Netflix Movies and TV Shows. Original dataset, collected from Flixable.
+https://www.kaggle.com/datasets/shivamb/netflix-shows
+

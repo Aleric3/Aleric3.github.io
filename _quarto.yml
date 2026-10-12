@@ -16,6 +16,8 @@ website:
             href: analysis1.qmd
           - text: Analysis 2
             href: analysis2.qmd
+      - href: project2.qmd
+        text: "Text Analysis"
 
 format:
   html:
