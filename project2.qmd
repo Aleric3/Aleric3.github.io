@@ -1,10 +1,12 @@
+---
 title: "Exploring Netflix Titles"
 author: "Alex Erickson"
 format: html
 execute:
+  echo: true
   warning: false
   message: false
-
+---
 
 How do Netflix story themes differ by country and between movies and TV shows?
 
@@ -25,18 +27,10 @@ netflix_countries <- netflix |>
     country == "Canada"
   )
 
-netflix_countries |>
-  count(country, type)
-```
-
-
-```{r}
 netflix_themes <- netflix_countries |>
   filter(!is.na(description)) |>
   mutate(description_c = str_to_lower(description))
 
-netflix_themes |>
-  select(title, description_c)
 
 netflix_themes <- netflix_themes |>
 mutate(
