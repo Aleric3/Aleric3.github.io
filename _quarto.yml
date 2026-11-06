@@ -16,8 +16,10 @@ website:
             href: analysis1.qmd
           - text: Analysis 2
             href: analysis2.qmd
-      - href: project2.qmd
-        text: "Text Analysis"
+          - text: "Project 3: NBA Three-Point Analysis"
+            href: project_3.qmd
+          - href: project2.qmd
+            text: "Text Analysis"
 
 format:
   html:
