@@ -422,6 +422,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>lineup_data <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(null_panels, obs_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>My make_null_data() function takes a panel number and the team-game data, randomly rearranges the points values, and labels the result with that panel number. I then used map_dfr() to apply this function to 19 panel numbers, whihc gives each panel its own shuffle and combines the reult into one datatset. I then added the unchanged original data in the remaining, randomly chosen panel.</p>
 <p>Each panel shows three-point attempts and points scored for NBA teams in individual games. One of the panels includes the original data while the other 19 contain null data created by shufflinng points scored among rows. I compared the panels to see if there was a real visual difference between the orginal relashionship and the patterns produced by the null hypothesis.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup_data, <span class="fu">aes</span>(<span class="at">x =</span> three_point_attempts, <span class="at">y =</span> points)) <span class="sc">+</span></span>
@@ -440,7 +441,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Conclusion:</p>
-<p>I guessed panel 8 but the original data was in panel 1. The orginal scatterplot did not stand out significantly compared to the other 19 plots that were created by the null hypothesis. Based on this lineup, I do not have conclusive evidence that there is a true relashionship between, three point attempts and points scored in the 2023-24 NBA season games I observed.</p>
+<p>I guessed panel 8 but the original data was in panel 1. The orginal scatterplot did not stand out significantly compared to the other 19 plots that were created by the null hypothesis. This visual result does not establish that no association exists; it means this lineup did not give me convincing visual evidence of one. Additionally, my observation is limited to game observations solely from the 2023-24 NBA season.</p>
 <p>Source:</p>
 <p>BoxScore Lab. (2026, November 5). 2023–24 team game results [Dataset]. BoxScore Lab downloads. Original statistics from NBA Stats.</p>
 

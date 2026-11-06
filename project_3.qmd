@@ -58,6 +58,9 @@ lineup_data <- bind_rows(null_panels, obs_data)
 
 ```
 
+My make_null_data() function takes a panel number and the team-game data, randomly rearranges the points values, and labels the result with that panel number. I then used map_dfr() to apply this function to 19 panel numbers, whihc gives each panel its own shuffle and combines the reult into one datatset. I then added the unchanged original data in the remaining, randomly chosen panel.
+
+
 Each panel shows three-point attempts and points scored for NBA teams in individual games. One of the panels includes the original data while the other 19 contain null data created by shufflinng points scored among rows. I compared the panels to see if there was a real visual difference between the orginal relashionship and the patterns produced by the null hypothesis.
 ```{r}
 ggplot(lineup_data, aes(x = three_point_attempts, y = points)) +
@@ -71,8 +74,8 @@ ggplot(lineup_data, aes(x = three_point_attempts, y = points)) +
 
 Conclusion:
 
-I guessed panel 8 but the original data was in panel 1. The orginal scatterplot did not stand out significantly compared to the other 19 plots that were created by the null hypothesis. Based on this lineup, I do not have conclusive evidence that there is a true relashionship between, three point attempts and points scored in the 2023-24 NBA season games I observed.
+I guessed panel 8 but the original data was in panel 1. The orginal scatterplot did not stand out significantly compared to the other 19 plots that were created by the null hypothesis. This visual result does not establish that no association exists; it means this lineup did not give me convincing visual evidence of one. Additionally, my observation is limited to game observations solely from the 2023-24 NBA season.
 
 Source:
 
-BoxScore Lab. (2026, November 5). 2023–24 team game results [Dataset]. BoxScore Lab downloads. Original statistics from NBA Stats.
+BoxScore Lab. (2026, November 5). 2023–24 team game results [Dataset]. BoxScore Lab downloads. Original statistics from NBA Stats. 
