@@ -68,6 +68,7 @@ ggplot(lineup_data, aes(x = three_point_attempts, y = points)) +
   facet_wrap(~ panel, ncol = 5) +
   labs(
     title = "Relationship Between NBA Three-Point Attempts and Points Scored",
+    x = "Three-point attempts by a team in a game",
     y = "Points scored by that team in the game"
   )
 ```
